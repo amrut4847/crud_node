@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Form</h1>
+        <form action="/add/complete" method="POST" enctype='multipart/form-data')>
+            <table>
+                <tr>
+                    <td><label for="fname">Firstname:</label></td>
+                    {{#if list}}
+                        {{#list}}
+                            <td><input type="text" id="fname" name="fname" value="{{name}}" placeholder="ex:ganesh" required/></td>
+                        {{/list}}
+                        {{else}}
+                            <td><input type="text" id="fname" name="fname" placeholder="ex:ganesh" required/></td>
+                    {{/if}}
+                </tr>
+                <tr>
+                     <td> <label for="email">Email:</label></td>
+                    {{#if list}}
+                        {{#list}}
+                            <td> <input type="email" name="email_id" id="email" placeholder="ex:abc@gmail.com" value="{{email_id}}" required/></td>
+                        {{/list}}
+                        {{else}}
+                           <td> <input type="email" name="email_id" id="email" placeholder="ex:abc@gmail.com"  required/></td>
+                    {{/if}}
+                </tr>
+                {{#if list}}
+                    {{#list}}
+                        <input type="hidden" name="hiddenId" value="{{ id }}">
+                    {{/list}}
+                    {{else}}
+                      <input type="hidden" name="hiddenId" value="">
+                {{/if}}
+
+                <input type="file" name="fileupload">
+                <tr>
+                    <td> <label for="action">Action:</label></td>
+                    {{#if list}}
+                    {{#list}}
+                        <td><input type="submit" value="Update" name="submit"  id="action"/>
+                    {{/list}}
+                    {{else}}
+                        <td><input type="submit" value="Submit" name="submit"  id="action"/>
+                {{/if}}
+                <a href="/employee">Cancel</a></td>
+                </tr>
+
+            </table>
+        </form>
+    </body>
+</html>

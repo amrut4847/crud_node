@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Employee</title>
+  
+ 
+</script>
+<style>
+h1,h4{
+    text-align: center;
+}
+table{
+    width: 500px;
+     margin: 0px auto;
+}
+td,th,table{
+
+    text-align: center;
+    border:1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+   
+    
+}
+thead{
+    background: green;
+}
+th{
+    color:red;
+}
+a{
+    text-decoration: none;
+}
+tr:hover {  
+    background: gray;
+    color:white ;
+}
+</style>
+</head>
+<body>
+	<!--
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	-->
+  
+ <h1>List of all Employee</h1>
+	<table >
+        <thead>
+            <th>Sr.no</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th colspan="2">Action</th>
+        </thead>
+        <tbody >
+            {{#list}}
+                <tr>
+                    <td >{{@index}}</td>
+                    <td >{{name}}</td>
+                    <td>{{email_id}}</td>
+					<td><a href="edit?id={{id}}">Edit</a></td>
+                    <td><a href="delete?id={{id}}">Delete</a></td>
+                </tr>
+            {{/list}}
+        </tbody>
+    </table>
+    <!-- <ul class="name">
+            {{#each list}}
+                <li>{{@last}}:{{this.name}}</li>@index,@key,@last,@first
+            {{/each}}
+            </ul>
+            {{log  "look at this"}} -->
+    <h4><a href="/create">Insert Record</a></h4>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Policy Slider</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script>
+  
+	$(function() {
+		//$("#slider").slider();
+		$( "#slider" ).slider({
+			range: true,
+			min: 1,
+			max: 99999,
+			values: [ 100, 9999 ],
+			slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				findBrokGst($( "#slider" ).slider( "values", 0 ), $( "#slider" ).slider( "values", 1 ));
+			}
+		});
+		$( "#amount" ).val( "$" + $( "#slider" ).slider( "values", 0 ) +
+		" - $" + $( "#slider" ).slider( "values", 1 ) );
+
+		//$("#slider").on("slidestop", function(event, ui) {
+			//findBrokGst($( "#slider" ).slider( "values", 0 ), $( "#slider" ).slider( "values", 1 ));
+		//});
+		
+		
+	});
+
+function findBrokGst(first, last){
+	
+	if(first>0 && last<=9999){
+		$("#brokerage").val("$10");
+		$("#gst").val("$1");
+	}else if(first>10000  && last<=19999){
+		$("#brokerage").val("$20");
+		$("#gst").val("$2");
+	}else if(first>20000  && last<=29999){
+		$("#brokerage").val("$20");
+		$("#gst").val("$2");
+	}else if(first>30000  && last<=39999){
+		$("#brokerage").val("$20");
+		$("#gst").val("$2");
+	}else if(first>40000  && last<=49999){
+		$("#brokerage").val("$20");
+		$("#gst").val("$2");
+	}else if(first>50000  && last<=59999){
+		$("#brokerage").val("$20");
+		$("#gst").val("$2");
+	}else if(first>60000  && last<=69999){
+		$("#brokerage").val("$30");
+		$("#gst").val("$3");
+	}else if(first>70000   && last<=79999){
+		$("#brokerage").val("$30");
+		$("#gst").val("$3");
+	}else if(first>80000   && last<=89999){
+		$("#brokerage").val("$40");
+		$("#gst").val("$4");
+	}else if(first>90000   && last<=99999){
+		$("#brokerage").val("$50");
+		$("#gst").val("$5");
+	}else{
+		$("#brokerage").val("Not within range");
+		$("#gst").val("Not within range");
+	}
+	
+}
+
+
+
+</script>
+</head>
+<body>
+ 
+<p>
+  <label for="amount" style="font-size:20px;">Insured Goods Values:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;font-size:24px;">
+</p>
+ 
+<div id="slider" style="width:50%;"></div>
+ 
+  
+  
+<p>
+  <label for="brokerage" style="font-size:20px;">Brokerage:</label>
+  <input type="text" id="brokerage" value="$10" readonly style="border:0; color:#f6931f; font-weight:bold;font-size:24px;">
+</p>
+
+<p>
+  <label for="gst" style="font-size:20px;">GST:</label>
+  <input type="text" id="gst" readonly value="$1" style="border:0; color:#f6931f; font-weight:bold;font-size:24px;">
+</p>
+
+</body>
+</html>
