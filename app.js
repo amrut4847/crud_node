@@ -1,3 +1,4 @@
+console.log('hello');
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'crud-akproject.rhcloud.com',
