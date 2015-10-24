@@ -1,9 +1,9 @@
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database :'node'
+  host     : 'iot-akproject.rhcloud.com',
+  user     : 'adminxp3rc3V',
+  password : 'lnSGmwhPvLfu',
+  database :'iot'
 });
 connection.connect();
 var express = require('express');
